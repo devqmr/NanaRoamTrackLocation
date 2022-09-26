@@ -1,6 +1,5 @@
 package com.exa.nanashopper.staging
 
-import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
@@ -9,7 +8,7 @@ import com.zeugmasolutions.localehelper.LocaleHelper
 import com.zeugmasolutions.localehelper.LocaleHelperApplicationDelegate
 import timber.log.Timber
 
-class BaseApplication : Application() {
+class BaseApplication : MainApplication() {
 
 
     private val localeAppDelegate = LocaleHelperApplicationDelegate()
@@ -27,11 +26,10 @@ class BaseApplication : Application() {
         LocaleHelper.onAttach(super.getApplicationContext())
 
 
-
     override fun onCreate() {
         super.onCreate()
-        // TODO: Step 1 : Toggle events
-        Roam.initialize(this, "[Add Publishable Key]")
+
+        Log.d("Logs", "Enter BaseApplication onCreate()")
 
 
         Timber.plant(object : Timber.DebugTree() {
